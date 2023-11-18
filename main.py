@@ -24,6 +24,20 @@ class GameBoard:
         col = place % 3
         self.cells[row][col] = symbol
 
+    def contains_winner(self) -> str | None:
+        # TODO: Might be able to refactor this function
+
+        for i in range(len(self.cells) - 1):
+            if self.cells[i][0] == self.cells[i][1] == self.cells[i][2] != " ":
+                return self.cells[i][0]
+            if self.cells[0][i] == self.cells[1][i] == self.cells[2][i] != " ":
+                return self.cells[i][0]
+        
+        if self.cells[0][0] == self.cells[1][1] == self.cells[2][2] != " ":
+            return self.cells[0][0]
+        if self.cells[0][2] == self.cells[1][1] == self.cells[2][0] != " ":
+            return self.cells[0][2]
+
 class Player:
     def __init__(self, symbol: str):
         self.symbol = symbol
@@ -49,8 +63,8 @@ class Game:
     def __game_loop(self):
         game_running = True
         current_turn = self.player_x
+        print(self.game_board)
         while game_running:
-            print(self.game_board)
             if current_turn == self.player_x:
                 self.player_x.take_turn(self.game_board)
                 current_turn = self.player_o
@@ -58,9 +72,13 @@ class Game:
                 self.player_o.take_turn(self.game_board)
                 current_turn = self.player_x
 
+            print(self.game_board)
             game_running = not self.__is_game_finished()
 
     def __is_game_finished(self) -> bool:
+        if winner := self.game_board.contains_winner():
+            print(f"Player {winner} wins!")
+            return True
         if self.game_board.is_full:
             print("Tie!")
             return True
@@ -70,7 +88,7 @@ class Game:
 
     @staticmethod
     def __play_again() -> bool:
-        response = input("Would you like to play again? (y): ")
+        response = input("Would you like to play again? (y/n): ")
         return response == "y"
 
 def main():
