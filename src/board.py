@@ -22,12 +22,18 @@ class GameBoard:
         return self.cells[index // 3][index % 3] == " "
 
     def contains_winner(self) -> str | None:
+        """Returns the winner symbol if there is a winner in the board, None otherwise
+        """
+        
         for i in range(len(self.cells) - 1):
+            # Check for horizontal winner
             if self.cells[i][0] == self.cells[i][1] == self.cells[i][2] != " ":
                 return self.cells[i][0]
+            # Check for veritcal winner
             if self.cells[0][i] == self.cells[1][i] == self.cells[2][i] != " ":
                 return self.cells[0][i]
         
+        # Check for diagonal winner
         if self.cells[0][0] == self.cells[1][1] == self.cells[2][2] != " ":
             return self.cells[0][0]
         if self.cells[0][2] == self.cells[1][1] == self.cells[2][0] != " ":

@@ -8,6 +8,7 @@ class Player:
     def take_turn(self, game_board: GameBoard):
         invalid_input = True
         print(f"{self.__symbol} player's turn")
+
         while invalid_input:
             response = get_input("Select a square (1-9): ")
 
@@ -19,6 +20,10 @@ class Player:
         game_board.place_symbol(self.__symbol, int(response)-1)
 
     def __validate_input(self, input_value: str, game_board: GameBoard) -> bool:
+        """Validates the given input, valid inputs are numbers between 1 and 9
+        and empty cells
+        """
+        
         if not input_value.isdigit():
             print(f"Please input a number")
             return False

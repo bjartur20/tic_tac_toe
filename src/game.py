@@ -11,6 +11,7 @@ class Game:
 
     def start(self):
         play_again = True
+        
         while play_again:
             self.game_board.setup_game_board()
             self.__game_loop()
