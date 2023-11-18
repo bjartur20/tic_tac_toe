@@ -19,10 +19,8 @@ class GameBoard:
     def is_full(self) -> bool:
         return all([cell != " " for row in self.cells for cell in row])
 
-    def place_symbol(self, symbol: str, place: int):
-        row = place // 3
-        col = place % 3
-        self.cells[row][col] = symbol
+    def place_symbol(self, symbol: str, idx: int):
+        self.cells[idx // 3][idx % 3] = symbol
 
     def contains_winner(self) -> str | None:
         # TODO: Might be able to refactor this function
@@ -41,7 +39,6 @@ class GameBoard:
 class Player:
     def __init__(self, symbol: str):
         self.symbol = symbol
-        self.score = 0
 
     def take_turn(self, game_board: GameBoard):
         response = input("Select a square (1-9): ")
@@ -88,8 +85,7 @@ class Game:
 
     @staticmethod
     def __play_again() -> bool:
-        response = input("Would you like to play again? (y/n): ")
-        return response == "y"
+        return input("Would you like to play again? (y/n): ") == "y"
 
 def main():
     Game().start()
