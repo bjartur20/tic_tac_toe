@@ -36,3 +36,17 @@ python main.py
 ```zsh
 python -m pytest tests
 ```
+
+## Run in docker container
+
+Build the docker image
+
+```zsh
+docker build . -t tic-tac-toe
+```
+
+Run the container in interactive mode with a pseudo terminal
+
+```zsh
+docker run -it tic-tac-toe
+```
