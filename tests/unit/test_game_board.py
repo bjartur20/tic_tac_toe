@@ -37,6 +37,19 @@ def test_place_symbol_places_a_symbol_correctly_on_the_board(game_board: GameBoa
 
     assert game_board.cells == expected_cells
 
+def test_is_cell_empty_returns_true_when_cell_at_the_given_index_is_empty(game_board: GameBoard):
+    assert game_board.is_cell_empty(0) is True
+
+def test_is_cell_empty_returns_false_when_cell_at_the_given_index_is_not_empty(game_board: GameBoard):
+    game_board.cells = [
+        ["X", " ", " "],
+        [" ", " ", " "],
+        [" ", " ", " "],
+    ]
+
+    assert game_board.is_cell_empty(0) is False
+
+    
 
 def test_contains_winner_returns_the_winner_when_a_winner_is_found_vertically(game_board: GameBoard):
     game_board.cells = [

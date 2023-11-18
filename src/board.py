@@ -26,8 +26,6 @@ class GameBoard:
         return self.cells[index // 3][index % 3] == " "
 
     def contains_winner(self) -> str | None:
-        # TODO: Might be able to refactor this function
-
         for i in range(len(self.cells) - 1):
             if self.cells[i][0] == self.cells[i][1] == self.cells[i][2] != " ":
                 return self.cells[i][0]
