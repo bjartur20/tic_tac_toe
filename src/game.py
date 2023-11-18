@@ -1,5 +1,6 @@
 from src.board import GameBoard
 from src.player import Player
+from src.utils import get_input
 
 class Game:
     def __init__(self, game_board: GameBoard, players: list[Player]):
@@ -33,6 +34,7 @@ class Game:
         if winner := self.game_board.contains_winner():
             print(f"Player {winner} wins!")
             return True
+        
         if self.game_board.is_full:
             print("Tie!")
             return True
@@ -42,4 +44,4 @@ class Game:
 
     @staticmethod
     def __play_again() -> bool:
-        return input("Would you like to play again? (y/n): ") == "y"
+        return get_input("Would you like to play again? (y/n): ") == "y"

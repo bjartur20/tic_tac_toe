@@ -11,7 +11,7 @@ class Player:
             response = get_input("Select a square (1-9): ")
             if response.isdigit() and (1 <= int(response) <= 9):
                 invalid_input = False
-            print("Please input a number between 1 and 9")
+            print(f"Player {self.symbol}, please input a number between 1 and 9")
         
 
         game_board.place_symbol(self.symbol, int(response)-1)
