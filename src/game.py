@@ -7,6 +7,7 @@ class Game:
         self.game_board = game_board
         self.player_1 = players[0]
         self.player_2 = players[1]
+        self.game_history = []
 
     def start(self):
         play_again = True
@@ -29,6 +30,11 @@ class Game:
 
             print(self.game_board)
             game_running = not self.__is_game_finished()
+        
+        self.game_history.append({
+            "winner": "Tie" if self.game_board.is_full else self.game_board.contains_winner(),
+            "board": self.game_board.cells
+        })
 
     def __is_game_finished(self) -> bool:
         if winner := self.game_board.contains_winner():
