@@ -1,3 +1,5 @@
+from src.utils import get_game_board_string
+
 class GameBoard:
     def setup_game_board(self):
         self.cells = [
@@ -7,13 +9,7 @@ class GameBoard:
         ]
 
     def __str__(self) -> str:
-        ret = f"{'-' * len(self.cells*2)}-\n"
-
-        for row in self.cells:
-            ret += f"|{'|'.join(row)}|\n"
-            ret += f"{'-' * len(self.cells*2)}-\n"
-
-        return ret
+        return get_game_board_string(self.cells)
 
     @property
     def is_full(self) -> bool:
