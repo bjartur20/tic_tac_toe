@@ -19,9 +19,11 @@ class GameBoard:
     def is_full(self) -> bool:
         return all([cell != " " for row in self.cells for cell in row])
 
-    def place_symbol(self, symbol: str, idx: int):
-        # TODO: Handle when a symbol is already at this index
-        self.cells[idx // 3][idx % 3] = symbol
+    def place_symbol(self, symbol: str, index: int):
+        self.cells[index // 3][index % 3] = symbol
+    
+    def is_cell_empty(self, index: int) -> bool:
+        return self.cells[index // 3][index % 3] == " "
 
     def contains_winner(self) -> str | None:
         # TODO: Might be able to refactor this function
