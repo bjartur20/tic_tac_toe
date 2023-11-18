@@ -1,4 +1,4 @@
-from board import GameBoard
+from src.board import GameBoard
 
 class Player:
     def __init__(self, symbol: str):

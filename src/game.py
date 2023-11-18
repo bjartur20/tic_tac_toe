@@ -1,5 +1,5 @@
-from board import GameBoard
-from player import Player
+from src.board import GameBoard
+from src.player import Player
 
 class Game:
     def __init__(self, game_board: GameBoard, players: list[Player]):

@@ -1,6 +1,6 @@
-from game import Game
-from board import GameBoard
-from player import Player
+from src.game import Game
+from src.board import GameBoard
+from src.player import Player
 
 def main():
     Game(GameBoard(), [Player(symbol="X"), Player(symbol="O")]).start()
